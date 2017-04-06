@@ -1,14 +1,17 @@
 buildscript {
     repositories {
+        jcenter()
         maven { url 'https://maven.fabric.io/public' }
     }
 
     dependencies {
         classpath 'io.fabric.tools:gradle:1.22.0'
+        classpath 'com.trickyandroid:jacoco-everywhere:0.2.1'
     }
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco-everywhere'
 apply plugin: 'io.fabric'
 
 android {
@@ -23,6 +26,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
