@@ -19,6 +19,7 @@ before_script:
 
 after_success:
   - ./gradlew crashlyticsUploadDistributionDebug
+  - bash <(curl -s https://codecov.io/bash)
 
 notifications:
   slack: conference-chat:C97bIbUp82Anz9uoMTiXgM3Z
